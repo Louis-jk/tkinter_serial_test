@@ -1,6 +1,19 @@
 import tkinter
 from tkinter.ttk import Combobox
 
+from escpos.printer import Serial
+p = Serial(devfile='/dev/tty.Bluetooth-Incoming-Port',
+           baudrate=9600,
+           bytesize=8,
+           parity='N',
+           stopbits=1,
+           timeout=1.00,
+           dsrdtr=True)
+
+p.text("Hello World\n")
+p.qr("You can readme from your smartphone")
+p.cut()
+
 window = tkinter.Tk()
 
 window.minsize(400,400)
